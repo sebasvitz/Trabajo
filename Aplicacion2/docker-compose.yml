@@ -1,0 +1,41 @@
+version: "3.8"
+
+services: 
+  micro1:
+    image: micro1:v1.0
+    container_name: pepegrillo
+    hostname: micro1
+    ports:
+      - "5555:5555"
+    expose:
+      - "5555"
+    networks:
+      - default
+    volumes:
+      - micro1:/ms1
+    
+
+
+  micro2:
+    image:  micro2:v1.0
+    container_name: gepeto
+    hostname: micro2
+    ports:
+      - "5556:5556"
+    expose:
+      - "5556"
+    networks:
+      - default
+    volumes:
+      - micro2:/ms2
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 10.10.0.0/24
+
+
+volumes:
+  micro1: ~
+  micro2: ~

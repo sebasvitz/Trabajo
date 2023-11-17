@@ -1,0 +1,10 @@
+FROM ubuntu:22.04
+WORKDIR /ms2
+COPY . .
+RUN apt update
+RUN apt install python3.10 -y
+RUN apt install python3-pip -y
+RUN pip3.10 install dash
+RUN pip3.10 install pandas
+EXPOSE 5556
+CMD ["python3.10" , "app.py"]
